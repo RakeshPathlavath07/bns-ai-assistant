@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import re
 import tiktoken
 
-from ddgs.ddgs import DDGS
+from duckduckgo_search import DDGS
 from langchain.retrievers.multi_query import MultiQueryRetriever
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import SentenceTransformerEmbeddings
