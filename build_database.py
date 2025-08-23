@@ -12,7 +12,7 @@ import torch
 # CONFIG
 # =========================
 PDF_PATH = "Bharatiya_Nyaya_Sanhita_2023.pdf"
-CHROMA_DIR = "chroma_db_database"
+CHROMA_DIR = "database_chroma_db"
 COLLECTION_NAME = "bns_sections_definitive"
 MODEL_NAME = "BAAI/bge-large-en-v1.5"
 
