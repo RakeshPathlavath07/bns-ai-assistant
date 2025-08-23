@@ -26,7 +26,7 @@ st.set_page_config(
 )
 
 # --- CONFIG ---
-CHROMA_DIR = "database_chroma_db"
+CHROMA_DIR = "chroma_db_Database2"
 COLLECTION_NAME = "bns_sections_definitive"
 BI_ENCODER_MODEL = "BAAI/bge-large-en-v1.5"
 CROSS_ENCODER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"

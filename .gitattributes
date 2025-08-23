@@ -1,3 +1,4 @@
 chroma_db_database/*.bin filter=lfs diff=lfs merge=lfs -text
 chroma_db_definitive/*.bin filter=lfs diff=lfs merge=lfs -text
 database_chroma_db/*.bin filter=lfs diff=lfs merge=lfs -text
+chroma_db_Database2/*.bin filter=lfs diff=lfs merge=lfs -text
