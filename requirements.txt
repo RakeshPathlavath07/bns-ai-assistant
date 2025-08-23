@@ -3,7 +3,8 @@ langchain
 langchain-openai
 langchain-community
 sentence-transformers
-chromadb
+chromadb==0.4.24
+numpy==1.26.4
 tiktoken
 duckduckgo-search
 PyMuPDF
