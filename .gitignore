@@ -5,8 +5,16 @@ __pycache__/
 
 # Environment
 .env
+.streamlit/
 venv/
 newenv/
 
+# folder
+chroma_db_database/
+chroma_db_Database2/
+
 # macOS
 .DS_Store
+
+build_database.py
+app.py

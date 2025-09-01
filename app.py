@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import re
 import tiktoken
 
-from duckduckgo_search import DDGS
+from ddgs.ddgs import DDGS
 from langchain.retrievers.multi_query import MultiQueryRetriever
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import SentenceTransformerEmbeddings
@@ -34,10 +34,10 @@ CROSS_ENCODER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 # --- CACHED RESOURCES ---
 @st.cache_resource
 def load_llm():
-    if not os.getenv("OPENROUTER_API_KEY"):
+    if not st.secrets["OPENROUTER_API_KEY"]:
         st.error("OPENROUTER_API_KEY is not set.")
         st.stop()
-    return ChatOpenAI(model_name="openai/gpt-3.5-turbo", openai_api_base="https://openrouter.ai/api/v1", openai_api_key=os.getenv("OPENROUTER_API_KEY"), temperature=0, max_tokens=1024)
+    return ChatOpenAI(model_name="meta-llama/llama-3.3-8b-instruct:free", openai_api_base="https://openrouter.ai/api/v1", openai_api_key=st.secrets["OPENROUTER_API_KEY"], temperature=0.2, max_tokens=1024)
 
 @st.cache_resource
 def load_vector_store():
@@ -60,12 +60,14 @@ def get_tokenizer():
 def find_best_link(section_id):
     if not section_id or section_id == "Unknown": return None
     section_number = section_id.split(' ')[-1]
-    search_query = f"Bharatiya Nyaya Sanhita Section {section_number} site:indiankanoon.org OR site:devgan.in"
+    search_query = f"Bharatiya Nyaya Sanhita Section {section_number} OR site:devgan.in"
     try:
         with DDGS() as searcher:
             search_results = list(searcher.text(search_query, max_results=1))
         return search_results[0]["href"] if search_results else None
-    except Exception: return None
+    except Exception as e:
+        print(f"Web search for {section_id} failed with an error: {e}")
+        return None
 
 # --- RETRIEVAL & RE-RANKING LOGIC ---
 def retrieve_and_rerank(question: str, vector_store, reranker, llm, num_candidates=15, top_n=3):
@@ -167,5 +169,10 @@ if st.button("Search", type="primary") and question.strip():
                         st.write(doc.page_content)
                         with st.spinner(f"Searching for a web link for {section_id}..."):
                             link = find_best_link(section_id)
+                            
                         if link:
+                            print(f"Found link for {section_id}: {link}")
                             st.markdown(f"**Read more online:** [{section_id} on external site]({link})")
+                        else:
+                            print(f"No link found for {section_id}")
+                            st.info(f"No direct web link found for {section_id}. You may search manually on legal databases like [Indian Kanoon](https://indiankanoon.org) or [Devgan.in](https://devgan.in).")
