@@ -125,15 +125,15 @@ The app will launch automatically in your default browser.
 ###  🗺️ Future Roadmap
 This project is designed to grow into a complete legal intelligence system.
 
-*   [ ] ** IPC ↔ BNS Cross-Referencing: Mapping old laws to the new Sanhita.
+*   [ ] IPC ↔ BNS Cross-Referencing: Mapping old laws to the new Sanhita.
 
-*   [ ] ** Case Law Database: Direct integration with a larger database of judgments.
+*   [ ]  Case Law Database: Direct integration with a larger database of judgments.
 
-*   [ ] ** Multilingual Support: Hindi and regional language query support.
+*   [ ]  Multilingual Support: Hindi and regional language query support.
 
-*   [ ] ** Session Management: Save and share analysis reports.
+*   [ ]  Session Management: Save and share analysis reports.
 
-*   [ ] ** Advanced Re-ranking: Improve retrieval accuracy using cross-encoders.
+*   [ ]  Advanced Re-ranking: Improve retrieval accuracy using cross-encoders.
 
 ---
 
