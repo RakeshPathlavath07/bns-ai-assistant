@@ -1,245 +1,138 @@
-⚖️ BNS AI Legal Assistant
-An AI-powered assistant for India’s Bharatiya Nyaya Sanhita (BNS), with a unique Comparative Case Analysis Engine
-💡 Overview
+# ⚖️ BNS AI Legal Assistant
 
-This project is an advanced, full-stack AI legal assistant built specifically for the Bharatiya Nyaya Sanhita (BNS 2023). It provides two major capabilities:
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-Orchestration-green)
+![LLM](https://img.shields.io/badge/Mistral-7B-purple)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-1️⃣ Conversational Legal Chatbot
+**An AI-powered, full-stack legal assistant built for India’s Bharatiya Nyaya Sanhita (BNS 2023).**
 
-Ask any question about the BNS in simple English.
-The system retrieves relevant legal sections from a FAISS vector database created from the official BNS PDF and generates accurate, grounded answers with proper citations.
+This system goes far beyond a simple Q&A chatbot. It combines **Retrieval-Augmented Generation (RAG)**, deep legal text understanding, and a unique **Comparative Case Analysis** engine that allows users to analyze a case, compare it with a real judgment, and understand legal discrepancies.
 
-2️⃣ Comparative Case Analysis Tool (Unique Feature)
+The core mission: **Make the BNS easier to understand, explore, and apply — for students, researchers, and legal professionals.**
 
-You provide:
+---
 
-a case summary
+## 🚀 The Problem & Our Solution
 
-a real judgment summary
+The **Bharatiya Nyaya Sanhita (BNS)** is a dense legal document. Understanding it traditionally requires manual reading, section-by-section searching, cross-referencing, and years of interpretation experience. For students and interns, this process is slow and overwhelming.
 
-The AI:
-✔ Retrieves relevant BNS sections
-✔ Performs its own interpretation
-✔ Extracts judge-cited sections & final outcome
-✔ Compares both
-✔ Generates a Discrepancy Analysis explaining the differences
+**This project solves that problem.**
 
-Perfect for law students, researchers, and legal analysis training.
+*   **Problem:** Slow, manual, and expertise-heavy legal research.
+*   **Solution:** A resilient AI assistant that:
+    *   Answers questions strictly using BNS context.
+    *   Retrieves the most relevant legal sections instantly.
+    *   Handles follow-up questions with **conversational memory**.
+    *   **Compares AI interpretation with real judgments** to highlight discrepancies (e.g., judicial discretion, evidence gaps).
 
-🚀 Problem & Solution
-The Problem
+---
 
-Legal research is slow and requires expert knowledge. Understanding how the BNS applies to real-life cases is even more challenging.
+## 🛠️ Key Features
 
-The Solution
+### 1. 💬 Conversational BNS Chatbot
+A memory-enabled assistant that understands natural language.
+*   **Contextual Understanding:** Handles follow-up queries and converts them into standalone legal questions.
+*   **RAG Technology:** Retrieves relevant sections from a **FAISS vector database**.
+*   **Strict Citations:** Generates answers with specific source references (e.g., `[Source: Section XX]`).
+*   **Expandable Text:** Displays full legal text and links to external references (**IndianKanoon** & **Devgan**).
 
-A powerful AI tool that:
+### 2. ⚖️ Comparative Case Analysis Engine
+A unique feature that bridges the gap between theory and practice.
+1.  **AI Analysis:** The system performs its own BNS-based analysis using semantic retrieval.
+2.  **Judgment Extraction:** Extracts structured data (`SECTIONS`, `OUTCOME`) from real judgment text.
+3.  **Discrepancy Report:** Compares the AI's logic with the Judge's ruling, explaining differences due to **judicial discretion**, **mitigating circumstances**, or **intent**.
 
-interprets BNS sections instantly
+### 3. 🧠 Stateful Conversational Memory
+The assistant remembers the context of your conversation.
+*   *User:* "What is Section 113?"
+*   *User:* "What is the punishment for it?"
+*   *Result:* The AI knows "it" refers to Section 113.
 
-provides grounded legal answers
+### 4. 🔗 External Legal Link Integration
+For every cited section, the system uses **DuckDuckGo Search** to fetch authoritative reference links from **IndianKanoon** and **Devgan** for further reading.
 
-compares AI-based legal reasoning with real-world judgments
+---
 
-explains judicial discretion and differences
+## 🏗️ Architecture & Tech Stack
 
-🧠 Key Features
-✅ 1. Conversational AI Chatbot
+This project is built for modularity, accuracy, and scalability.
 
-Natural language input
+| Component | Technology |
+| :--- | :--- |
+| **Frontend** | Streamlit |
+| **Orchestration** | LangChain |
+| **LLM** | Mistral-7B (via OpenRouter API) |
+| **Vector Store** | FAISS |
+| **Embeddings** | SentenceTransformers (BAAI/bge-large-en-v1.5) |
+| **Search** | DuckDuckGo Search (DDGS) |
+| **Data Pipeline** | Custom Python PDF Parser |
 
-Understands follow-up questions using memory
+---
 
-Converts follow-up queries into meaningful standalone questions
+## ⚙️ Installation & Usage
 
-Retrieves relevant sections using FAISS
+Follow these steps to run the project locally.
 
-Answers strictly based on the BNS legal context
+### 1. Prerequisites
+*   Python 3.9+
+*   Virtual environment tool (`venv` or `conda`)
 
-Uses citations like:
-[Source: Section XX]
-
-Provides expandable legal content + external source links
-
-✅ 2. Comparative Case Analysis Engine
-
-A custom 3-step AI workflow:
-
-Step 1 — AI’s BNS-Based Interpretation
-
-Takes case summary
-
-Retrieves relevant BNS sections
-
-Produces structured legal analysis with citations
-
-Step 2 — Judgment Data Extraction
-
-From the real judgment summary, the AI extracts:
-
-SECTIONS: [...]
-OUTCOME: [...]
-
-Step 3 — Final Discrepancy Analysis
-
-Compares:
-
-AI interpretation
-
-Real judge interpretation
-
-Explains differences due to:
-
-judicial discretion
-
-evidence
-
-provocation
-
-interpretation variations
-
-✅ 3. Intelligent External Legal Links
-
-For each cited section, the system fetches the most relevant link from:
-
-IndianKanoon.org
-
-Devgan.in
-
-✅ 4. Clean Streamlit UI
-
-Chat-style conversation
-
-Memory-enabled
-
-Expandable legal references
-
-Two-column comparative report
-
-Warnings when information is outside BNS context
-
-🏗️ Architecture & Tech Stack
-Frontend
-
-Streamlit
-
-AI Orchestration
-
-LangChain
-
-ConversationBufferMemory
-
-Runnable workflows
-
-MultiQueryRetriever
-
-LLM
-
-Mistral 7B Instruct via OpenRouter API
-
-Vector Search
-
-FAISS vector database
-
-Embeddings: BAAI/bge-large-en-v1.5
-
-Data Processing
-
-Custom section extraction using Regex
-
-PDF parsing with PyMuPDF (from builder script)
-
-DDGS for external link search
-
-📁 Project Structure
-│── comparative_app.py               # Main application
-│── build_database_faiss.py          # Builds FAISS index from BNS PDF
-│── Bharatiya_Nyaya_Sanhita_2023.pdf
-│── faiss_index/                     # Vector DB storage
-│── requirements.txt
-│── runtime.txt
-│── .gitattributes
-│── .gitignore
-
-⚙️ Installation & Setup
-1. Clone the Repository
-git clone https://github.com/yourusername/bns-ai-assistant
+### 2. Clone the Repository
+```bash
+git clone https://github.com/yourusername/bns-ai-assistant.git
 cd bns-ai-assistant
+```
+### 3. Set Up the Environment
+Create and activate a virtual environment:
 
-2. Create a Virtual Environment
+```bash
+# Windows
+python -m venv venv
+venv\Scripts\activate
+
+# Mac/Linux
 python3 -m venv venv
 source venv/bin/activate
-
-3. Install Dependencies
+```
+Install dependencies:
+```bash
 pip install -r requirements.txt
+```
 
-4. Add API Key
+### 4.Configure API Keys
+This project uses OpenRouter to access Mistral-7B.
+Create a secrets file for Streamlit:
+```bash
+mkdir .streamlit
+touch .streamlit/secrets.toml  # Or create manually in Windows
+```
 
-Create:
+Add your API key to .streamlit/secrets.toml:
+```bash
+OPENROUTER_API_KEY = "your_openrouter_key_here"
+```
 
-.streamlit/secrets.toml
-
-
-Add:
-
-OPENROUTER_API_KEY = "your_key_here"
-
-5. Run the App
+### 5.Run the Application
+```bash
 streamlit run comparative_app.py
+```
+The app will launch automatically in your default browser.
 
-🎯 Usage
-🟦 Chatbot Mode
+##  Future Roadmap
+This project is designed to grow into a complete legal intelligence system.
 
-Ask questions like:
+IPC ↔ BNS Cross-Referencing: Mapping old laws to the new Sanhita.
 
-"What is Section 113?"
+Case Law Database: Direct integration with a larger database of judgments.
 
-"What is the punishment for it?"
+Multilingual Support: Hindi and regional language query support.
 
-Features:
+Session Management: Save and share analysis reports.
 
-citation-linked answers
+Advanced Re-ranking: Improve retrieval accuracy using cross-encoders.
 
-expandable sections
+## License
+This project is licensed under the MIT License. 
 
-links to IndianKanoon/Devgan
-
-memory-based follow-up
-
-🟩 Comparative Case Analysis Mode
-
-Input:
-
-case summary
-
-real judgment summary
-
-Outputs:
-
-AI interpretation
-
-cited sections
-
-judge-cited sections
-
-final judgment outcome
-
-discrepancy analysis
-
-expandable legal references
-
-🗺️ Future Enhancements
-
-Add case law databases
-
-Multi-language support (Hindi first)
-
-Persistent conversation history
-
-Cross-encoder re-ranking
-
-Mobile UI optimization
-
-📜 License
-
-This project is licensed under the MIT License.
