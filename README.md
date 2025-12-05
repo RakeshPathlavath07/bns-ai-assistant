@@ -122,7 +122,7 @@ The app will launch automatically in your default browser.
 
 ---
 
-##  🗺️ Future Roadmap
+###  🗺️ Future Roadmap
 This project is designed to grow into a complete legal intelligence system.
 
 *   [ ] ** IPC ↔ BNS Cross-Referencing: Mapping old laws to the new Sanhita.
@@ -137,6 +137,6 @@ This project is designed to grow into a complete legal intelligence system.
 
 ---
 
-##  📜 License
+###  📜 License
 This project is licensed under the MIT License. 
 
